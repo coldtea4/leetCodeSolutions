@@ -1,0 +1,23 @@
+using namespace std;
+
+class Solution {
+public:
+    int reverse(int x) {
+        if (x == 0) return 0;
+        if (x <= INT_MIN) return 0;
+        int absx = abs(x);
+        int reverse = 0;
+        bool positive;
+        long longCheck = 0;
+        positive = x > 0 ? true : false;
+        while (absx != 0){
+            longCheck = (long)reverse*10;
+            if(longCheck > INT_MAX){
+                return 0;
+            }
+            reverse = reverse*10 + absx%10;
+            absx = absx/10;
+        }
+        return positive? reverse : (-1)*reverse;
+    }
+};
